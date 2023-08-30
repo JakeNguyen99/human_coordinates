@@ -1,5 +1,34 @@
 class Human:
-    
+    def sprint_right(self):
+        if self.__stamina == 0:
+            self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.__pos_x += self.__speed*2
+
+    def sprint_left(self):
+        if self.__stamina == 0:
+            self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.__pos_x -= self.__speed*2
+
+    def sprint_up(self):
+        if self.__stamina == 0:
+            self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.__pos_y += self.__speed*2
+
+    def sprint_down(self):
+        if self.__stamina == 0:
+            self.__raise_if_cannot_sprint()
+        self.__use_sprint_stamina()
+        self.__pos_y -= self.__speed*2
+
+    def __raise_if_cannot_sprint(self):
+        raise Exception("not enough stamina to sprint")
+
+    def __use_sprint_stamina(self):
+        self.__stamina -= 1
+
     def move_right(self):
         self.__pos_x += self.__speed
 
@@ -17,40 +46,62 @@ class Human:
 
     # don't touch below this line
 
-    def __init__(self, pos_x, pos_y, speed):
+    def __init__(self, pos_x, pos_y, speed, stamina):
         self.__pos_x = pos_x
         self.__pos_y = pos_y
         self.__speed = speed
+        self.__stamina = stamina
 
 
 def main():
-    print("creating a human. x=0 y=0 speed=5")
-    human = Human(0, 0, 5)
-    print_position(human)
+    try:
+        print("creating a human. x=0 y=0 speed=5")
+        human = Human(0, 0, 5, 3)
+        print_position(human)
+    except Exception as e:
+        print(e)
 
-    print("moving left...")
-    human.move_left()
-    print_position(human)
+    try:
+        print("sprinting left...")
+        human.sprint_left()
+        print_position(human)
+    except Exception as e:
+        print(e)
 
-    print("moving left...")
-    human.move_left()
-    print_position(human)
+    try:
+        print("sprinting left...")
+        human.sprint_left()
+        print_position(human)
+    except Exception as e:
+        print(e)
 
-    print("moving right...")
-    human.move_right()
-    print_position(human)
+    try:
+        print("moving right...")
+        human.move_right()
+        print_position(human)
+    except Exception as e:
+        print(e)
 
-    print("moving up...")
-    human.move_up()
-    print_position(human)
+    try:
+        print("moving up...")
+        human.move_up()
+        print_position(human)
+    except Exception as e:
+        print(e)
 
-    print("moving up...")
-    human.move_up()
-    print_position(human)
+    try:
+        print("sprinting up...")
+        human.sprint_up()
+        print_position(human)
+    except Exception as e:
+        print(e)
 
-    print("moving down...")
-    human.move_down()
-    print_position(human)
+    try:
+        print("sprinting down...")
+        human.sprint_down()
+        print_position(human)
+    except Exception as e:
+        print(e)
 
 
 def print_position(human):
