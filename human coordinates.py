@@ -1,5 +1,19 @@
 class Human:
-    # ?
+    
+    def move_right(self):
+        self.__pos_x += self.__speed
+
+    def move_left(self):
+        self.__pos_x -= self.__speed
+
+    def move_up(self):
+        self.__pos_y += self.__speed
+
+    def move_down(self):
+        self.__pos_y -= self.__speed
+
+    def get_position(self):
+        return self.__pos_x, self.__pos_y
 
     # don't touch below this line
 
